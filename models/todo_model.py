@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import models, fields, api
 
 class TodoTask(models.Model):
     _name = 'todo.task'
@@ -7,4 +7,19 @@ class TodoTask(models.Model):
 
     name = fields.Char('Description', required=True)
     is_done = fields.Boolean('Done?')
-    active = fields.Boolean('Done?', default=True)
+    active = fields.Boolean('Active?', default=True)
+
+    @api.multi
+    def do_toggle_button(self):
+        for todo in self:
+            todo.is_done = not todo.is_done
+    
+    @api.multi
+    def do_clear_done(self):
+        dones = self.search([
+            ('is_done', '=', True)
+        ])
+
+        dones.write({
+            'active': False
+        })

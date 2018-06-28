@@ -5,6 +5,8 @@
     'depends': ['base'],
     'application': True,
     'data': [
-        'views/todo_menu.xml'
+        'security/todo_model_acl.xml',
+        'views/todo_menu.xml',
+        'views/todo_views.xml',
     ]
 }

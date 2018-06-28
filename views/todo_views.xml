@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="todo_task_form_view">
+        <field name="name">todo.task.form</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <form string="ToDo Task Form">
+                <!-- Aggiungiamo l'header, dove posizioneremo i bottoni-->
+                <header>
+                    <!-- Aggiungiamo un pulsante per modificare lo stato Fatto del task -->
+                    <button 
+                        name="do_toggle_button" 
+                        type="object"
+                        string="Toggle Done"
+                        class="oe_highlight"/>
+                    
+                    <!-- Aggiungiamo un pulsante per rimuovere i task in stato fatto -->
+                    <button 
+                        name="do_clear_done" 
+                        type="object"
+                        string="Clear All Done"
+                        class="oe_highlight"/>
+                </header>
+
+                <!-- Aggiungiamo lo sheet per incapsulare il contenuto -->
+                <sheet>
+                    <!-- Raggruppiamo i campi su due colonne e assegnamo un identificativo ai vari gruppi -->
+                    <group name="group_top">
+                        <group name="group_left">
+                            <field name="name"/>
+                        </group>
+                        <group name="group_right">
+                            <field name="is_done"/>
+                            <field name="active" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="todo_task_tree_view">
+        <field name="name">todo.task.tree</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <tree decoration-muted="is_done==True">
+                <field name="name"/>
+                <field name="is_done"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="todo_task_search_view">
+        <field name="name">todo.task.search</field>
+        <field name="model">todo.task</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+
+                <filter 
+                    string="Not Done"
+                    domain="[('is_done','=',False)]"/>
+                <filter 
+                    string="Done"
+                    domain="[('is_done','!=',False)]"/>
+            </search>
+        </field>
+    </record>
+</odoo>
