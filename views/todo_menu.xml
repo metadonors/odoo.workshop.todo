@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Azione che apre la vista list Todo Task -->
+    <act_window 
+        id="action_todo_task"
+        name="ToDo Task"
+        res_model="todo.task"
+        view_mode="tree, form"
+        />
+
+    <!-- Oggetto menu che apre la lista dei Todo -->
+    <menuitem
+        id="menu_todo_task"
+        name="Todos"
+        action="action_todo_task"
+        />
+</odoo>

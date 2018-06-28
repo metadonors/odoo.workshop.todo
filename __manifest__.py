@@ -3,5 +3,8 @@
     'description': 'Gestisci i tuoi TODO',
     'author': 'Fabrizio Arzeni',
     'depends': ['base'],
-    'application': True
+    'application': True,
+    'data': [
+        'views/todo_menu.xml'
+    ]
 }
