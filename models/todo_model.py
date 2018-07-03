@@ -5,9 +5,9 @@ class TodoTask(models.Model):
     _name = 'todo.task'
     _description = 'Todo Task'
 
-    name = fields.Char('Description', required=True)
-    is_done = fields.Boolean('Done?')
-    active = fields.Boolean('Active?', default=True)
+    name = fields.Char('Titolo', required=True)
+    is_done = fields.Boolean('Fatto?')
+    active = fields.Boolean('Attivo?', default=True)
 
     @api.multi
     def do_toggle_button(self):

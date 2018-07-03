@@ -64,6 +64,8 @@
                 <filter 
                     string="Done"
                     domain="[('is_done','!=',False)]"/>
+                <filter string="By User" name='group_user' context="{'group_by': 'user_id'}"/>
+                
             </search>
         </field>
     </record>
